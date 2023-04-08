@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr5c3udpxratb"]
+[gd_scene load_steps=10 format=3 uid="uid://b3megvhgkndwq"]
 
 [ext_resource type="MeshLibrary" uid="uid://dgsxv7bueqgw2" path="res://Streets/street_lib.meshlib" id="1_ep1qd"]
-[ext_resource type="Script" path="res://Scenes/camera.gd" id="2_li0ex"]
-[ext_resource type="Script" path="res://Scenes/Car_Path.gd" id="3_kauv4"]
-[ext_resource type="Script" path="res://Scenes/CameraPosition.gd" id="4_7ih7v"]
+[ext_resource type="Script" path="res://Scripts/Car_Path.gd" id="2_kn0wr"]
+[ext_resource type="Script" path="res://Scripts/CameraPosition.gd" id="4_71g50"]
 [ext_resource type="PackedScene" uid="uid://pq2esbn46bv" path="res://Misc/car.glb" id="4_s0qha"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="5_wi5nk"]
+[ext_resource type="Script" path="res://Scripts/DynamicGrid.gd" id="6_2dk5v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23uuf"]
 albedo_color = Color(0.447059, 1, 0.415686, 1)
@@ -34,29 +35,32 @@ shape = SubResource("BoxShape3D_aidfw")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.394872, 0.918736, 0, -0.918736, 0.394872, 0, 326.311, 0)
 
-[node name="GridMap" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-mesh_library = ExtResource("1_ep1qd")
-data = {
-"cells": PackedInt32Array(65535, 65530, 655363, 65535, 65529, 655363, 0, 65529, 1441792, 65535, 65528, 655363, 65534, 65528, 655363, 65534, 65530, 655363, 0, 65530, 1048576, 0, 65531, 1048576, 0, 65532, 1048576, 0, 65533, 1048577, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 0, 65534, 1441792, 0, 65535, 1441792, 0, 0, 1441792, 0, 1, 1441792, 0, 2, 1441794, 1, 2, 655360, 65535, 2, 655360, 65534, 2, 655360, 2, 2, 655360, 0, 3, 1048576, 0, 4, 1048576, 0, 5, 1048576, 4, 65533, 0, 5, 65533, 0, 6, 65533, 2, 6, 65534, 1441792, 6, 65535, 1441792, 6, 0, 1441792, 6, 1, 1441792, 6, 2, 655361, 3, 2, 655360, 4, 2, 655360, 5, 2, 655360, 8, 2, 655360, 7, 2, 655360, 9, 2, 655360, 11, 2, 655360, 10, 2, 655360, 65533, 2, 655360, 65532, 2, 655360, 0, 6, 1048576, 0, 7, 1048576, 6, 65532, 1048576, 6, 65531, 1048576, 6, 65530, 1048576, 6, 65529, 1048576, 7, 65533, 0, 9, 65533, 0, 8, 65533, 0, 10, 65533, 0, 11, 65533, 0, 6, 65528, 1, 12, 65533, 1048578, 12, 65532, 1441792, 12, 65531, 1441792, 12, 65530, 1441792, 12, 65529, 1441792, 12, 65528, 2, 11, 65528, 0, 10, 65528, 0, 9, 65528, 0, 8, 65528, 0, 7, 65528, 0, 13, 65528, 0, 15, 65528, 0, 14, 65528, 1, 14, 65529, 1441792, 14, 65530, 1441792, 14, 65531, 1048577, 14, 65532, 1048576, 14, 65533, 1441793, 13, 65533, 655360)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+[node name="Camera Pos + Y-Rot" type="Node3D" parent="."]
+script = ExtResource("4_71g50")
+
+[node name="Camera Rot Pivot" type="Node3D" parent="Camera Pos + Y-Rot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.01206, 0)
+script = ExtResource("5_wi5nk")
+
+[node name="Camera3D" type="Camera3D" parent="Camera Pos + Y-Rot/Camera Rot Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.025, 0)
+current = true
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29756, 4.10749, -0.000820875)
 curve = SubResource("Curve3D_wone7")
 
 [node name="Car path" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.999955, 0, 0.0049257, 0, 1, 0, -0.0049257, 0, -0.999955, 0.0104434, 0.13368, -0.66629)
-script = ExtResource("3_kauv4")
+transform = Transform3D(-0.999954, 0, 0.00492569, 0, 1, 0, -0.00492569, 0, -0.999954, 0.0104434, 0.13368, -0.66629)
+script = ExtResource("2_kn0wr")
 
 [node name="car" parent="Path3D/Car path" instance=ExtResource("4_s0qha")]
 transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0, 0, 0)
 
 [node name="Car path2" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.0025569, 0, -0.99996, 0, 1, 0, 0.99996, 0, 0.0025569, 3.05155, 0.13368, 4.66459)
+transform = Transform3D(0.0025569, 0, -0.99996, 0, 1, 0, 0.99996, 0, 0.0025569, 3.00308, 0.13368, 4.66471)
 progress = 32.2028
-script = ExtResource("3_kauv4")
+script = ExtResource("2_kn0wr")
 
 [node name="car" parent="Path3D/Car path2" instance=ExtResource("4_s0qha")]
 transform = Transform3D(-0.15, 0, -2.2701e-08, 0, 0.15, 0, 2.2701e-08, 0, -0.15, 0, 0, 0)
@@ -64,18 +68,23 @@ transform = Transform3D(-0.15, 0, -2.2701e-08, 0, 0.15, 0, 2.2701e-08, 0, -0.15,
 [node name="Car path3" type="PathFollow3D" parent="Path3D"]
 transform = Transform3D(-0.00345304, 0, 0.99992, 0, 1, 0, -0.99992, 0, -0.00345304, 8.59199, 0.13368, -4.65095)
 progress = 12.3956
-script = ExtResource("3_kauv4")
+script = ExtResource("2_kn0wr")
 
 [node name="car" parent="Path3D/Car path3" instance=ExtResource("4_s0qha")]
 transform = Transform3D(-0.15, 0, -2.2701e-08, 0, 0.15, 0, 2.2701e-08, 0, -0.15, 0, 0, 0)
 
-[node name="Camera Pos + Y-Rot" type="Node3D" parent="."]
-script = ExtResource("4_7ih7v")
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh_library = ExtResource("1_ep1qd")
+data = {
+"cells": PackedInt32Array(65535, 65530, 655363, 65535, 65529, 655363, 0, 65529, 1441792, 65535, 65528, 655363, 65534, 65528, 655363, 65534, 65530, 655363, 0, 65530, 1048576, 0, 65531, 1048576, 0, 65532, 1048576, 0, 65533, 1048577, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 0, 65534, 1441792, 0, 65535, 1441792, 0, 0, 1441792, 0, 1, 1441792, 0, 2, 1441794, 1, 2, 655360, 65535, 2, 655360, 65534, 2, 655360, 2, 2, 655360, 0, 3, 1048576, 0, 4, 1048576, 0, 5, 1048576, 4, 65533, 0, 5, 65533, 0, 6, 65533, 2, 6, 65534, 1441792, 6, 65535, 1441792, 6, 0, 1441792, 6, 1, 1441792, 6, 2, 655361, 3, 2, 655360, 4, 2, 655360, 5, 2, 655360, 8, 2, 655360, 7, 2, 655360, 9, 2, 655360, 11, 2, 655360, 10, 2, 655360, 65533, 2, 655360, 65532, 2, 655360, 0, 6, 1048576, 0, 7, 1048576, 6, 65532, 1048576, 6, 65531, 1048576, 6, 65530, 1048576, 6, 65529, 1048576, 7, 65533, 0, 9, 65533, 0, 8, 65533, 0, 10, 65533, 0, 11, 65533, 0, 6, 65528, 1, 12, 65533, 1048578, 12, 65532, 1441792, 12, 65531, 1441792, 12, 65530, 1441792, 12, 65529, 1441792, 12, 65528, 2, 11, 65528, 0, 10, 65528, 0, 9, 65528, 0, 8, 65528, 0, 7, 65528, 0, 13, 65528, 0, 15, 65528, 0, 14, 65528, 1, 14, 65529, 1441792, 14, 65530, 1441792, 14, 65531, 1048577, 14, 65532, 1048576, 14, 65533, 1441793, 13, 65533, 655360, 5, 65528, 0, 4, 65528, 0, 3, 65528, 0, 2, 65528, 0, 0, 65528, 0, 1, 65528, 0)
+}
+script = ExtResource("6_2dk5v")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Camera Rot Pivot" type="Node3D" parent="Camera Pos + Y-Rot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.01206, 0)
-script = ExtResource("2_li0ex")
-
-[node name="Camera3D" type="Camera3D" parent="Camera Pos + Y-Rot/Camera Rot Pivot"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.025, 0)
-current = true
+[node name="Label" type="Label" parent="."]
+offset_right = 168.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.894118, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25

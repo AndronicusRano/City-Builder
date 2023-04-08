@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://Misc/icon.svg"
 
+[display]
+
+window/size/mode=2
+
 [input]
 
 pan_left={

@@ -10,3 +10,4 @@ func _ready():
 func _process(delta):
 	progress_ratio += .006
 	#print(1 / delta)
+
