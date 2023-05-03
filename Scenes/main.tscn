@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b3megvhgkndwq"]
 
 [ext_resource type="MeshLibrary" uid="uid://dgsxv7bueqgw2" path="res://Streets/street_lib.meshlib" id="1_ep1qd"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_8w2r1"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="2_ctfpm"]
 [ext_resource type="Script" path="res://Scripts/Car_Path.gd" id="2_kn0wr"]
 [ext_resource type="Script" path="res://Scripts/CameraPosition.gd" id="4_71g50"]
 [ext_resource type="PackedScene" uid="uid://pq2esbn46bv" path="res://Misc/car.glb" id="4_s0qha"]
@@ -26,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.169923, -0.133623, -0.19055
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
-transform = Transform3D(0.97963, 0, 0, 0, 0.97963, 0, 0, 0, 0.97963, 0, 0, 0)
+transform = Transform3D(0.97963, 0, 0, 0, 0.97963, 0, 0, 0, 0.97963, 4.75299, -16.3052, 7.48215)
 material_override = SubResource("StandardMaterial3D_23uuf")
 size = Vector3(1000, 1, 800)
 
@@ -42,7 +42,7 @@ script = ExtResource("4_71g50")
 
 [node name="Camera Rot Pivot" type="Node3D" parent="Camera Pos + Y-Rot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.01206, 0)
-script = ExtResource("2_8w2r1")
+script = ExtResource("2_ctfpm")
 
 [node name="Camera3D" type="Camera3D" parent="Camera Pos + Y-Rot/Camera Rot Pivot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.025, 0)
@@ -77,7 +77,7 @@ script = ExtResource("2_kn0wr")
 transform = Transform3D(-0.15, 0, -2.2701e-08, 0, 0.15, 0, 2.2701e-08, 0, -0.15, 0, 0, 0)
 
 [node name="Car path3" type="PathFollow3D" parent="GridMap/Path3D"]
-transform = Transform3D(-0.00345292, 0, 0.99992, 0, 1, 0, -0.99992, 0, -0.00345292, 8.59199, 0.13368, -4.65095)
+transform = Transform3D(-0.00345304, 0, 0.99992, 0, 1, 0, -0.99992, 0, -0.00345304, 8.59199, 0.13368, -4.65095)
 progress = 12.3956
 script = ExtResource("2_kn0wr")
 

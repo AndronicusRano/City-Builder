@@ -24,7 +24,7 @@ func _process(delta):
 	
 	if Input.is_key_pressed(KEY_M):
 		current_tile = STRAIGHT
-	$"../Label".text = str(origin) + str(ray)
+	#$"../Label".text = str(origin) + str(ray)
 	
 	if intersection == {}:
 		return
@@ -44,12 +44,22 @@ func _process(delta):
 			if get_cell_item(neighboring_tile) == INVALID_CELL_ITEM:
 				continue
 			neighboring_orientation = get_cell_item_orientation(neighboring_tile)
-			if tile.x != 0 and neighboring_orientation % 10 != 0:
-				set_cell_item(neighboring_tile, THREE_WAY)		
-			elif tile.z != 0 and neighboring_orientation % 10 == 0:		
-				set_cell_item(neighboring_tile, THREE_WAY, 16)
+			var item = get_cell_item(neighboring_tile)
+			if item == STRAIGHT:
+				item = THREE_WAY
+				if tile.x != 0 and neighboring_orientation % 10 != 0:
+					set_cell_item(neighboring_tile, item, 10)
+					$"../Label".text = str(10)
+				elif tile.z != 0 and neighboring_orientation % 10 == 0:
+					set_cell_item(neighboring_tile, item, 0)
+					$"../Label".text = str(item)
+			elif item == THREE_WAY:
+				set_cell_item(neighboring_tile, FOUR_WAY)
 				
-			$"../Label".text = str(neighboring_orientation)
+			
+			
+				
+			#$"../Label".text = str(get_cell_item_orientation(tile_map_pos)) + str(neighboring_orientation)
 		
 		set_cell_item(tile_map_pos, STRAIGHT, neighboring_orientation)
 		
