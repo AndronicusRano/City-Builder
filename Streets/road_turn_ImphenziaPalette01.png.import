@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d32bkyj0f26of"
-path.s3tc="res://.godot/imported/car_ImphenziaPalette01.png-664e66fc3d2f366c320f7bf60eea2ac4.s3tc.ctex"
+uid="uid://b5fenrndkbw11"
+path.s3tc="res://.godot/imported/road_turn_ImphenziaPalette01.png-863b28c758abaf8f33ace780e8cc1aa6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Streets/car_ImphenziaPalette01.png"
-dest_files=["res://.godot/imported/car_ImphenziaPalette01.png-664e66fc3d2f366c320f7bf60eea2ac4.s3tc.ctex"]
+source_file="res://Streets/road_turn_ImphenziaPalette01.png"
+dest_files=["res://.godot/imported/road_turn_ImphenziaPalette01.png-863b28c758abaf8f33ace780e8cc1aa6.s3tc.ctex"]
 
 [params]
 

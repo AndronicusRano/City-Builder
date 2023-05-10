@@ -27,8 +27,6 @@ func _process(delta):
 	#rotation.z = 0
 	_update_movement(delta)
 	_update_mouselook()
-	print(1 / delta)
-
 func _input(event):
 	if event is InputEventMouseMotion:
 		_mouse_position = event.relative
