@@ -21,12 +21,7 @@ var RIGHT_TILE = neighboring_tiles[0]
 
 var diagonal_tiles = [Vector3i(1, 0, 1), Vector3i(1, 0, -1), Vector3i(-1, 0, 1), Vector3i(-1, 0, -1)]
 
-func _ready():
-	#print(get_used_cells())
-	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var mousePos = get_viewport().get_mouse_position()
 	var ray = camera.project_ray_normal(mousePos) * 10000
@@ -41,7 +36,6 @@ func _process(delta):
 	
 	var tile_pos = local_to_map(intersection.position)
 	#$"../Label".text = str("debug")
-	
 	if Input.is_action_just_released("place_tile") and get_cell_item(tile_pos) == INVALID_CELL_ITEM:
 		
 		orientate_tile_from_neighboring_tiles(tile_pos)
@@ -104,8 +98,6 @@ func orientate_tile_from_neighboring_tiles(tile_pos):
 		elif (neighboring_tile_cells[0] == LEFT_TILE + tile_pos or neighboring_tile_cells[1] == LEFT_TILE + tile_pos) and (neighboring_tile_cells[0] == RIGHT_TILE + tile_pos or neighboring_tile_cells[1] == RIGHT_TILE + tile_pos):
 			set_cell_item(tile_pos, STRAIGHT, RIGHT)
 			pass
-		
-				
 	elif len(neighboring_tile_cells) == 3:
 		var new_orientation = 0
 		if empty_neighbor_position == RIGHT_TILE:
@@ -119,8 +111,7 @@ func orientate_tile_from_neighboring_tiles(tile_pos):
 		set_cell_item(tile_pos, THREE_WAY, new_orientation)
 	elif len(neighboring_tile_cells) == 4:
 		set_cell_item(tile_pos, FOUR_WAY)
-				
-	
+
 
 func does_neighboring_tile_have_same_orientation(neighboring_tile_relative_pos, neighboring_tile_orientation):
 	if neighboring_tile_orientation == LEFT or neighboring_tile_orientation == RIGHT:

@@ -1,7 +1,8 @@
+Node3D
+Node
 Label
 PathFollow3D
 Path3D
-Node3D
 Camera3D
 CSGMesh3D
 MeshInstance3D
