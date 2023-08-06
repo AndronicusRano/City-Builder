@@ -11,6 +11,7 @@ enum {UP_RIGHT = 10, UP_LEFT = 22, DOWN_RIGHT = 16, DOWN_LEFT = 0}
 
 @onready var camera = $"../Camera Pos + Y-Rot/Camera Rot Pivot/Camera3D"
 @onready var sphere = $"../CSGSphere3D"
+@onready var mode_manager = $"../ModeManager"
 
 var neighboring_tiles = [Vector3i(1, 0, 0), Vector3i(-1, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, -1)]
 
@@ -23,6 +24,9 @@ var diagonal_tiles = [Vector3i(1, 0, 1), Vector3i(1, 0, -1), Vector3i(-1, 0, 1),
 
 
 func _process(delta):
+	#if mode_manager.get("current_mode") != mode_manager.get("modes")["ROAD_MODE"]:
+	#	return
+	
 	var mousePos = get_viewport().get_mouse_position()
 	var ray = camera.project_ray_normal(mousePos) * 10000
 	var origin = camera.project_ray_origin(mousePos)

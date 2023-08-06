@@ -5,3 +5,4 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="good_building" parent="." instance=ExtResource("1_w5tyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
