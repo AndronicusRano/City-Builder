@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/CameraPosition.gd" id="4_71g50"]
 [ext_resource type="PackedScene" uid="uid://pq2esbn46bv" path="res://Misc/car.glb" id="4_s0qha"]
 [ext_resource type="Script" path="res://Scripts/DynamicGrid.gd" id="6_2dk5v"]
-[ext_resource type="Script" path="res://Scenes/BuildingManager.gd" id="7_a4opo"]
+[ext_resource type="Script" path="res://Scripts/BuildingManager.gd" id="7_a4opo"]
 [ext_resource type="PackedScene" uid="uid://dcubx6horcrq6" path="res://Buildings/good_building.glb" id="8_xo3uj"]
 [ext_resource type="Script" path="res://Scenes/ModeManager.gd" id="9_ly8ut"]
 

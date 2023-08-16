@@ -24,7 +24,8 @@ var diagonal_tiles = [Vector3i(1, 0, 1), Vector3i(1, 0, -1), Vector3i(-1, 0, 1),
 
 
 func _process(delta):
-	#if mode_manager.get("current_mode") != mode_manager.get("modes")["ROAD_MODE"]:
+	print(mode_manager.get("modes"))
+	#if mode_manager.get("current_mode") != mode_manager.get("modes")["ROAD"]:
 	#	return
 	
 	var mousePos = get_viewport().get_mouse_position()
