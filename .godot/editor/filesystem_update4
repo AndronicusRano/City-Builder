@@ -1,8 +1,10 @@
-res://Scenes/mesh_library.tscn
-res://Scripts/fps.gd
-res://Scripts/ModeManager.gd
-res://Scripts/DynamicGrid.gd
-res://Scenes/building.tscn
 res://Scenes/main.tscn
 res://Streets/street_lib.tres
 res://Scenes/ModeManager.gd
+res://Scenes/mesh_library.tscn
+res://Scenes/building.tscn
+res://Scripts/DynamicGrid.gd
+res://Scripts/BuildingManager.gd
+res://Scripts/CameraPosition.gd
+res://Scripts/Car_Path.gd
+res://Scripts/fps.gd
